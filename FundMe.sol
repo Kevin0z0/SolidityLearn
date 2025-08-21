@@ -14,11 +14,16 @@ contract FundMe{
 
     mapping (address => uint256) public fundersToAmount;
 
-    uint256 MINIMUM_VALUE = 100 * 10 ** 18;  //USD
+    uint256 constant MINIMUM_VALUE = 100 * 10 ** 18;  //USD
+
+    uint256 constant TARGET = 1000 * 10 ** 18;
+
+    address public owner;
 
     constructor(){
         // sepolia test net
         dataFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+        owner = msg.sender;
     }
 
     function fund() external payable { //payable 收款
@@ -41,5 +46,21 @@ contract FundMe{
     function convertEthToUsd(uint256 ethAmount) internal view returns (uint256){
         uint256 ethPrice = uint256(getChainlinkDataFeedLatestAnswer());
         return ethAmount * ethPrice / (10 ** 8);
+    }
+
+    function getFund() external {
+        require(convertEthToUsd(address(this).balance) >= TARGET, "Target is not reached");
+        require(msg.sender == owner, "This function can only be called by owner");
+        //三种转账方式
+        //transfer： transfer ETH and revert if tx failed
+        payable(msg.sender).transfer(address(this).balance);
+        //send: 
+        //call
+    }
+
+    function transferOwnership(address newOwner) public{
+        require(msg.sender == owner, "This function can only be called by owner");
+        
+        owner = newOwner;
     }
 }
