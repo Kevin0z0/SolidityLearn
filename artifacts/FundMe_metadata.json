@@ -6,7 +6,13 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_locktime",
+						"type": "uint256"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -58,6 +64,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "getFundSuccess",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "owner",
 				"outputs": [
 					{
@@ -67,6 +86,44 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "refund",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_erc20Addr",
+						"type": "address"
+					}
+				],
+				"name": "setErc20Addr",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "funder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountToUpdate",
+						"type": "uint256"
+					}
+				],
+				"name": "setFunderToAmount",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -96,7 +153,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"FundMe.sol": "FundMe"
+			"FundMe_flattened.sol": "FundMe"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -110,20 +167,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol": {
-			"keccak256": "0x257a8d28fa83d3d942547c8e129ef465e4b5f3f31171e7be4739a4c98da6b4f0",
+		"FundMe_flattened.sol": {
+			"keccak256": "0xe7ca216a22b119df3dce751eac43c28d1982451e08dc9a9c1304b7f592e28f78",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6d39e11b1dc7b9b8ccdabbc9be442ab7cda4a81c748f57e316dcb1bcb4a28bf9",
-				"dweb:/ipfs/QmaG6vz6W6iEUBsbHSBob5mdcitYxWjoygxREHpsJHfWrS"
-			]
-		},
-		"FundMe.sol": {
-			"keccak256": "0xe2749e4ca7ee35d2d38e7466ddd638bd7f3fa7009fd553dfe73e13101eb0ac08",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://02651e55387ff80db436fb0564c195df4b86e5c87109a6e2f86f1ad729d6f184",
-				"dweb:/ipfs/QmbNfPXJ1qxo5J4obKJcrqTaRUmmrkbs9w5Ea1fiuZBbiS"
+				"bzz-raw://b03170037a72b12d5ab01432299f7efd33e9adf1cf3637e2ca1b8eacd5acccb7",
+				"dweb:/ipfs/Qmawb3CKwbhYrbVDBtgE4rYGWNaRKzqwysUr2caKaWjCtn"
 			]
 		}
 	},
